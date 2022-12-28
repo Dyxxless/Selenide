@@ -3,6 +3,7 @@ import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.conditions.Visible;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 
 import java.time.Duration;
 import java.time.LocalDate;
@@ -24,6 +25,8 @@ public class DeliveryTest {
         open("http://localhost:9999/");
         String date = deliveryDate();
         $("[placeholder=\"Город\"]").setValue("Пермь");
+        $("[data-test-id=date] input").sendKeys(Keys.chord(Keys.SHIFT,Keys.HOME),Keys.DELETE);
+        $("[data-test-id=date] input").setValue(date);
         $("[name=\"name\"]").setValue("Роман Романов");
         $("[name=\"phone\"]").setValue("+79991234567");
         $("[class=\"checkbox__box\"]").click();
