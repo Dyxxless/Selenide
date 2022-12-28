@@ -1,8 +1,6 @@
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.conditions.Visible;
-//import io.github.bonigarcia.wdm.WebDriverManager;
-//import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -21,19 +19,13 @@ public class DeliveryTest {
         //находим самую близкую дату доставки. 3 дня от сегодняшнего
     }
 
-    //WebDriverManager
-//    @BeforeAll
-//    static void setUpAll() {
-//        WebDriverManager.chromedriver().setup();
-//    }
-
     @Test
     void test() {
         //Configuration.holdBrowserOpen = true;
         open("http://localhost:9999/");
         String date = deliveryDate();
         $("[placeholder=\"Город\"]").setValue("Пермь");
-        $("[data-test-id=date] input").sendKeys(Keys.chord(Keys.SHIFT,Keys.HOME),Keys.DELETE);
+        $("[data-test-id=date] input").sendKeys(Keys.chord(Keys.SHIFT, Keys.HOME), Keys.DELETE);
         $("[data-test-id=date] input").setValue(date);
         $("[name=\"name\"]").setValue("Роман Романов");
         $("[name=\"phone\"]").setValue("+79991234567");
