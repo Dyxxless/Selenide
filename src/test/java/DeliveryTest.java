@@ -1,6 +1,8 @@
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.conditions.Visible;
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
@@ -17,6 +19,12 @@ public class DeliveryTest {
     String deliveryDate() {
         return LocalDate.now().plusDays(3).format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
         //находим самую близкую дату доставки. 3 дня от сегодняшнего
+    }
+
+    //WebDriverManager для того, чтоб тест прохдил на гите в CI (ci.appveyor)
+    @BeforeAll
+    static void setUpAll() {
+        WebDriverManager.chromedriver().setup();
     }
 
     @Test
